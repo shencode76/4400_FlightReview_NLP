@@ -2,14 +2,15 @@
 
 ## Title: Air Travel Satisfaction Prediction With Natural Language Process Project 
 
-
 ## Abstract:
+In this project, we aimed to predict the overall rating of airline flights based on a dataset containing both numerical features, as well as text reviews from customers. The dataset includes features such as airline, author, review date, customer review, aircraft, traveler type, cabin, route, date flown, seat comfort, cabin service, food and beverage quality, entertainment, ground service, value for money, and a recommended binary indicator. We explored three machine learning models, Decision Tree, Random Forest, and Natural Language Processing (NLP) models, and preprocessed the data by encoding categorical variables, scaling numerical variables, and tokenizing, stemming, or lemmatizing the text data.
+We evaluated the performance of models using a confusion matrix, mean squared error (MSE), and accuracy. We also examined the importance of each feature in the dataset to gain insights into which factors most strongly influence customers' overall rating of flights. Ultimately, we identified the best-performing model for predicting the overall rating of airline flights based on both numerical features and text reviews.
 
 ## Documentation:
 
 ### Introduction  
 **What is the problem?**   
-In this project, we aim to develop a predictive model to determine whether airline passengers will recommend their trip based on the quality of service they received during their air travel. The motivation behind this project is to help leading airline companies understand the priorities of their passengers, enabling them to optimize their resources and efforts in improving service quality. Additionally, this model will provide insights into the cognitive processes of passengers as they decide whether to recommend the airline to others.
+In this project, we aim to develop a predictive model to determine whether airline passengers will recommend their trip based on the quality of service they received during their air travel. The motivation behind this project is to help leading airline companies understand the priorities of their passengers, enabling them to optimize their resources and efforts in improving the service quality. Additionally, this model will provide insights into the cognitive processes of passengers as they decide whether to recommend the airline to others.
 
 **Why it is interesting?**  
 This problem is interesting because understanding passenger satisfaction and their likelihood to recommend the airline is crucial for companies to maintain their competitive advantage in the industry. By identifying the key factors that influence passengers' recommendations, airlines can enhance their service offerings and create a more enjoyable flying experience for their passengers. This, in turn, can lead to increased customer loyalty, positive word-of-mouth, and higher profitability for the airline companies. The use cases for this problem can be found in the strategic decision-making processes of airlines, crew training and development, and resource allocation for various in-flight services.
@@ -72,7 +73,7 @@ X_train, X_test, y_train,y_test = train_test_split(X, y, test_size = 0.2, random
 
 ```
 
-We use scikit-learn's DecisionTreeClassifier with default hyperparameters, and evaluate the model on the testing set using accuracy, confusion matric, MSE and F1-score with the optimale min_sample_split value and optimal min_sample_leaf value. The aim is to predict customers response to recommend the airlines they took based on the satisfaction score of each service they enjoyed during flight. In addition, we  apply Bagging approach to understand the importnace of each feature contains in the training dataset.
+We use scikit-learn's DecisionTreeClassifier with default hyperparameters, and evaluate the model on the testing set using accuracy, confusion matric, and MSE score with the optimale min_sample_split value and optimal min_sample_leaf value. The aim is to predict customers response to recommend the airlines they took based on the satisfaction score of each service they enjoyed during flight. In addition, we apply Bagging approach to understand the importnace of each feature contains in the training dataset.
 
 ```
 from sklearn.tree import DecisionTreeClassifier
@@ -122,9 +123,11 @@ import spacy
 
 To build an NLP model for classifying customer reviews as positive or negative, we'll first preprocess the text data by tokenizing, removing stop words, and stemming or lemmatizing the words. Then, we'll represent the text using a numerical format such as word embeddings or bag-of-words matrix.
 
-Next, we'll use a Recurrent Neural Network (RNN) with a Long Short-Term Memory (LSTM) or Gated Recurrent Unit (GRU) architecture to model the sequence of words in each review. The RNN will take in the numerical representation of the text and output a probability distribution over the three classes. We'll train the model on a portion of the dataset, evaluate its performance on a validation set, and tune its hyperparameters to optimize performance.
+Next, we'll use a Recurrent Neural Network (RNN) with a Long Short-Term Memory (LSTM) or Gated Recurrent Unit (GRU) architecture to model the sequence of words in each review. The RNN will take in the numerical representation of the text and output a probability distribution over the three classes. We'll train the model on a portion of the dataset, evaluate its performance on a validation set based on the validation loss score, validation accuracy score, and sentiment score, and tune its hyperparameters to optimize performance.
 
-In summary, our goal is to build an NLP model that can accurately classify customer reviews as positive, negative, or neutral. We'll achieve this by using an RNN with an LSTM or GRU architecture to model the sequence of words in each review, and training the model using a numerical representation of the text.
+In summary, our goal is to build an NLP model that can accurately classify customer reviews as recommeded or not. We'll achieve this by using a RNN to model the sequence of words in each review, and training the model using a numerical representation of the text.
+
+*Please find detailed implementation in the nlp.ipynb file.
 
 ## Results
 
@@ -132,7 +135,20 @@ In summary, our goal is to build an NLP model that can accurately classify custo
 
 - Natural Language Process Model
 
-The model has been trained for 3 epochs, and we can observe that the training accuracy does not improve significantly over these epochs. After the first epoch, the training accuracy is 66.23%, which increases slightly to 66.64% after the second and third epochs. The validation accuracy after the third epoch is 66.81%. These results indicate that the model might not be learning effectively from the data, as the accuracy levels are not very high and do not show significant improvement. The validation accuracy is arround 66.81%.
+The model has been trained for 3 epochs, and we can observe that the training accuracy does not improve significantly over these epochs. After the first epoch, the training accuracy is 66.23%, which increases slightly to 66.64% after the second and third epochs. The validation accuracy after the third epoch is 66.81%. These results indicate that the model might not be learning effectively from the data, as the accuracy levels are not very high and do not show significant improvement. The validation accuracy is around 66.81%.
+
+- Decision Tree: 
+The baseline Decision Tree classifier achieved an accuracy of 0.9339.
+
+Optimized parameter: 
+By tuning the max_depth parameter, the optimal max_depth was found to be 5, and the accuracy improved slightly to 0.9402.
+Tuning the min_samples_split parameter led to an optimal value of 100, yielding an accuracy of 0.9363. Tuning the min_samples_leaf parameter resulted in an optimal value of 54, with an accuracy of 0.9413. The final optimal Decision Tree classifier, with all three parameters tuned, achieved an accuracy of 0.9413.
+
+Using a Bagging Classifier with the optimal Decision Tree as the base estimator, the accuracy was 0.9409, which is comparable to the optimal Decision Tree classifier. Overall, the accuracy of the optimized decision tree is high indicating the model is well-fitted.
+
+- Random Forest:
+The experiments conducted using the RandomForestClassifier indicate that it performs better than the previous Decision Tree and Bagging Classifier models. The accuracy achieved by the RandomForestClassifier with default settings (n_estimators = 100) is 0.94899754. The optimized random forest classifier with n_estimaters and max_features has been tuned, and the accuracy can reach 0.95.  The random forest classifier model is well-fitted
+
 
 
 **Supplementary results**
@@ -153,13 +169,31 @@ The optimizer chosen for training is Adam with a default learning rate, and the 
 
 The parameter choices for the model architecture and training process seem reasonable, but the results indicate that the model might not be learning effectively from the data. This might be due to various factors such as insufficient training data, suboptimal hyperparameter choices, or the model architecture not being suitable for the task. Further experiments with different model architectures, hyperparameters, and additional training data might help in improving the performance.
 
+- Decision Tree： 
+The max_depth parameter controls the maximum depth of the tree. The chosen range is 2 to 50 The optimal value (5) helps prevent overfitting by limiting the tree's depth.
+
+The min_samples_split parameter determines the minimum number of samples required to split an internal node. Range from 2 to 100 was explored. The optimal value (100) ensures that the tree does not become too complex.
+
+The min_samples_leaf parameter sets the minimum number of samples required to be at a leaf node. A range of values from 1 to the number of leaves was considered. The optimal value (54) helps ensure that the tree does not create leaves with very few samples.
+
+In conclusion, the experiments show that tuning the parameters of the Decision Tree classifier can lead to improved performance. The Bagging Classifier provides a comparable result, showing the potential of ensemble methods to further enhance classification tasks.
+
+
+- Random Forest
+
+To improve the performance of the RandomForestClassifier, the max_features and n_estimators hyperparameters were tuned. For max_features, a range of 1 to 20 was considered, and cross-validation was used to determine the optimal value. The optimal max_features value was found to be 15, resulting in an accuracy of 0.94759057.
+
+Similarly, the n_estimators parameter was tuned using a range of 1 to 20. Cross-validation was again employed to find the optimal value. The optimal n_estimators value was found to be 20, leading to an accuracy of 0.95145973.
+
+Finally, by combining the optimal values for both max_features and n_estimators (15 and 20, respectively), the RandomForestClassifier achieved an accuracy of 0.94970102. This indicates that the model's performance improved after tuning the hyperparameters.
+
 ## Discussion
 
 - Natural Language Process Model
 
 The results obtained from the experiments indicate that the model's performance is not as good as we had hoped for. There is no significant improvement in accuracy across the epochs. This suggests that the model might not be effective in learning from the data. Here are some potential issues and possible solutions we plan to implement:
 
-Insufficient training data: In order to increase the speed in trying we limit to 500 data sample might be too small for the model to learn effectively. A larger dataset could help the model learn more complex patterns and improve its performance. We will Increase the size of the dataset by including more records or by using data augmentation techniques.
+Insufficient training data: In order to increase the speed in trying we limit to 500 data samples might be too small for the model to learn effectively. A larger dataset could help the model learn more complex patterns and improve its performance. We will Increase the size of the dataset by including more records or by using data augmentation techniques.
 
 Suboptimal hyperparameter choices: The current hyperparameter choices might not be the best fit for this problem. The learning rate, number of layers, hidden dimensions, dropout rate, and other hyperparameters could be tuned to improve the model's performance. We would Perform a grid search or use Bayesian optimization to find the optimal hyperparameters for this problem.
 
