@@ -1,6 +1,6 @@
 # 4400_FlightReview_NLP
 
-## Title: Air Travel Satisfaction Prediction With Natural Language Processing Project 
+## Title: Air Travel Satisfaction Prediction With Natural Language Process Project 
 
 
 ## Abstract:
@@ -25,7 +25,7 @@ Our model seeks to answer several important questions: What aspects do senior pa
 ### Setup:
 
 **Dataset Description**  
-Our dataset was gathered from the file capston_airlin_review3.csv, and we found this dataset on Kaggle. This original dataset includes airline reviews from 2006 to 20199 for popular airlines around the world with multiple choices and free test questions. This dataset contains 17 features, including 'airline', 'overall', 'author', 'review_date',' customer_review', 'aircraft', 'traveller_type', 'cabin', 'route', 'date_flown', 'seat_comfort', 'cabin_service', 'food_bev', 'entertainment', 'ground_service', 'value_for_money', 'recommended'. We added another field called "sentiment" to hold sentiment scores for each line of customer review. This flight customer review dataset contains 14211 rows of data after we dropped all the NaN values. Since this dataset contains a few categorical features and a rich text field as well, we decide to implement both Decision Tree Classifier model and Natural Language Processing model to make predictions and evaluate the prediction accuracy. 
+Our dataset was gathered from the file capston_airlin_review3.csv, and we found this dataset on Kaggle. This original dataset includes airline reviews from 2006 to 20199 for popular airlines around the world with multiple choices and free test questions. This dataset contains 17 features, including 'airline', 'overall', 'author', 'review_date',' customer_review', 'aircraft', 'traveller_type', 'cabin', 'route', 'date_flown', 'seat_comfort', 'cabin_service', 'food_bev', 'entertainment', 'ground_service', 'value_for_money', 'recommended'. We added another field called "sentiment" to hold sentiment scores for each line of customer review. This flight customer review dataset contains 14211 rows of data after we dropped all the NaN values. Since this dataset contains a few categorical features and a rich text field as well, we decide to implement both Decision Tree Classifier model and Natural Language Process model to make predictions and evaluate the prediction accuracy. 
 
 Feature descriptions are provided as follows:  
 airline: Name of the airline  
@@ -130,14 +130,14 @@ In summary, our goal is to build an NLP model that can accurately classify custo
 
 **Main results**
 
-**Natural Language Process Model**
+\*Natural Language Process Model**
 
 The model has been trained for 3 epochs, and we can observe that the training accuracy does not improve significantly over these epochs. After the first epoch, the training accuracy is 66.23%, which increases slightly to 66.64% after the second and third epochs. The validation accuracy after the third epoch is 66.81%. These results indicate that the model might not be learning effectively from the data, as the accuracy levels are not very high and do not show significant improvement. The validation accuracy is arround 66.81%.
 
 
 **Supplementary results**
 
-**Natural Language Process Model**
+\*Natural Language Process Model**
 
 The model architecture chosen for this task is a bidirectional LSTM with the following parameters:
 
@@ -155,7 +155,7 @@ The parameter choices for the model architecture and training process seem reaso
 
 ## Discussion
 
-**Natural Language Process Model**
+\*Natural Language Process Model
 
 The results obtained from the experiments indicate that the model's performance is not as good as we had hoped for. There is no significant improvement in accuracy across the epochs. This suggests that the model might not be effective in learning from the data. Here are some potential issues and possible solutions we plan to implement:
 
