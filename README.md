@@ -130,14 +130,14 @@ In summary, our goal is to build an NLP model that can accurately classify custo
 
 **Main results**
 
-\*Natural Language Process Model**
+- Natural Language Process Model
 
 The model has been trained for 3 epochs, and we can observe that the training accuracy does not improve significantly over these epochs. After the first epoch, the training accuracy is 66.23%, which increases slightly to 66.64% after the second and third epochs. The validation accuracy after the third epoch is 66.81%. These results indicate that the model might not be learning effectively from the data, as the accuracy levels are not very high and do not show significant improvement. The validation accuracy is arround 66.81%.
 
 
 **Supplementary results**
 
-\*Natural Language Process Model**
+- Natural Language Process Model
 
 The model architecture chosen for this task is a bidirectional LSTM with the following parameters:
 
@@ -155,7 +155,7 @@ The parameter choices for the model architecture and training process seem reaso
 
 ## Discussion
 
-\*Natural Language Process Model
+- Natural Language Process Model
 
 The results obtained from the experiments indicate that the model's performance is not as good as we had hoped for. There is no significant improvement in accuracy across the epochs. This suggests that the model might not be effective in learning from the data. Here are some potential issues and possible solutions we plan to implement:
 
