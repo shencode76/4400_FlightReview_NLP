@@ -161,7 +161,6 @@ Using a Bagging Classifier with the optimal Decision Tree as the base estimator,
 The experiments conducted using the RandomForestClassifier indicate that it performs better than the previous Decision Tree and Bagging Classifier models. The accuracy achieved by the RandomForestClassifier with default settings (n_estimators = 100) is 0.94899754. The optimized random forest classifier with n_estimaters and max_features has been tuned, and the accuracy can reach 0.95.  The random forest classifier model is well-fitted
 
 
-
 **Supplementary results**
 
 - Natural Language Process Model
