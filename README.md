@@ -28,6 +28,12 @@ The proposed approach, combining NLP for sentiment analysis and a decision tree 
 
 Our approach differs from the reference (https://github.com/bentrevett/pytorch-sentiment-analysis) in that we use categorical data as our target variable (whether the passenger will recommend the airline or not), while the reference uses numerical data as the target variable (sentiment scores). This difference allows our approach to focus more on the binary outcome of recommendations rather than a continuous range of sentiment scores.
 
+**What are the key components of my approach and results? Also, include any specific limitations.**  
+The key components of our approach include the application of NLP algorithms for sentiment analysis using PyTorch and the implementation of a decision tree model for predicting passengers' likelihood to recommend the airline. Our approach offers valuable insights into passengers' opinions and preferences, as well as the factors that drive their decision to recommend the airline to others.
+
+However, our approach has some limitations. For instance, the performance of the sentiment analysis model depends on the quality and representativeness of the dataset used for training. Additionally, the decision tree model, while interpretable, might be prone to overfitting, especially when dealing with complex relationships between various factors. To address the limitations, we have utilized a random forest model, an ensemble learning technique that combines multiple decision trees, enhancing prediction accuracy and robustness. This approach mitigates overfitting and improves the prediction of passengers' recommendations.
+
+
 ### Setup:
 
 **Dataset Description**  
