@@ -1,6 +1,7 @@
 # 4400_FlightReview_NLP
 
 ## Title: Air Travel Satisfaction Prediction With Natural Language Process Project 
+## Group Members: Wenting Yue, Xiaofei Xie, Yuxi Shen
 
 ## Abstract:
 In this project, we aimed to predict the overall rating of airline flights based on a dataset containing both numerical features, as well as text reviews from customers. The dataset includes features such as airline, author, review date, customer review, aircraft, traveler type, cabin, route, date flown, seat comfort, cabin service, food and beverage quality, entertainment, ground service, value for money, and a recommended binary indicator. We explored three machine learning models, Decision Tree, Random Forest, and Natural Language Processing (NLP) models, and preprocessed the data by encoding categorical variables, scaling numerical variables, and tokenizing, stemming, or lemmatizing the text data.
@@ -18,10 +19,14 @@ This problem is interesting because understanding passenger satisfaction and the
 Our model seeks to answer several important questions: What aspects do senior passengers care about most? What expectations do loyal customers have during their air journeys? What are the bearable delay time boundaries for different passengers? And, which three features are the most important predictors of passengers' likelihood to recommend the airline in general? By addressing these questions, our project aims to provide valuable insights for airline companies to cater to the diverse needs and preferences of their passengers, ensuring a better flying experience for all. Ultimately, this study will contribute to the ongoing efforts of airlines to improve customer satisfaction, enhance brand loyalty, and maintain a strong competitive position in the market, as well as increase the likelihood of passengers recommending their services to others.
 
 **What is the approach you propose to tackle the problem?**  
+To tackle the problem of predicting whether a customer will recommend a trip based on the quality of service they received, we propose a two-step approach. First, we will apply a natural language processing (NLP) algorithm to analyze the passengers' reviews, extracting valuable insights on their sentiment towards the airline's services. For this purpose, we will use PyTorch to set up our own sentiment analysis model, which will be trained on the current dataset we have. Then, we will apply the outcomes of the sentiment analysis to a decision tree model to make predictions on passengers' likelihood to recommend the airline.
 
+This approach makes sense for the problem as NLP can effectively process and analyze unstructured text data, such as reviews, and identify patterns related to passengers' opinions and preferences. The decision tree model, on the other hand, can handle both categorical and numerical data, making it suitable for this task. It is also easy to interpret and can provide insights into the relative importance of different factors affecting passengers' recommendations.
 
 **Why is the approach a good approach compared with other competing methods?**  
+The proposed approach, combining NLP for sentiment analysis and a decision tree model for prediction, is a good approach compared to other competing methods. NLP has proven to be an effective method for sentiment analysis, as it can capture the nuances and complexities of human language. The decision tree model is a suitable choice for this problem because it can handle a mix of categorical and numerical data, and it offers a high degree of interpretability, which is beneficial when understanding the key factors influencing passengers' recommendations.
 
+Our approach differs from the reference (https://github.com/bentrevett/pytorch-sentiment-analysis) in that we use categorical data as our target variable (whether the passenger will recommend the airline or not), while the reference uses numerical data as the target variable (sentiment scores). This difference allows our approach to focus more on the binary outcome of recommendations rather than a continuous range of sentiment scores.
 
 ### Setup:
 
@@ -198,3 +203,6 @@ Insufficient training data: In order to increase the speed in trying we limit to
 Suboptimal hyperparameter choices: The current hyperparameter choices might not be the best fit for this problem. The learning rate, number of layers, hidden dimensions, dropout rate, and other hyperparameters could be tuned to improve the model's performance. We would Perform a grid search or use Bayesian optimization to find the optimal hyperparameters for this problem.
 
 Preprocessing and tokenization: The quality of the input data and its preprocessing can have a significant impact on the model's performance. We will investigate the data preprocessing steps and improve them if necessary. This may include better tokenization, removing irrelevant information, or using a more suitable tokenizer for the task.
+
+## Reference: 
+Our implementation uses bentrevett's [Updated Sentiment Analysis](https://github.com/bentrevett/pytorch-sentiment-analysis/blob/master/2%20-%20Upgraded%20Sentiment%20Analysis.ipynb)code as a starting point. 
