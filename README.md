@@ -72,10 +72,13 @@ df_flight = pd.read_csv("capstone_airline_reviews3.csv", encoding="utf-8", encod
 **Visualization for a glimpse of dataset**  
 
 ![Screenshot](histogram.png)  
+The histogram shows the distribution of each quantitative data for each airline. 
 
 ![Screenshot](heatmap.png)  
+This correlation heatmap presents the correlations between six features in the flight dataset, including seat comfort score, cabin service score, food or beverage score, entertainment score, ground service score, and evaluation score of the value of money. 
 
 ![Screenshot](violin_distribution.png)  
+The violin plot visually represents the distribution of overall scores (ranging from 0 to 10) for airline journeys, with the scores on the y-axis and recommendations on the x-axis, divided into two categories: "yes" and "no." 
 
 **Decision Tree Classifier Model Setup**  
 For Decision Tree Classier model, we use 'overall', 'seat_comfort', 'cabin_service', 'food_bev', 'entertainment', 'ground_service', 'value_for_money', 'sentiment' features. To train a decision tree classifier, we preprocess the dataset by encoding categorical variables into dummy variables, scaling numerical variables, and splitting the data into training and testing sets.
