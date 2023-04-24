@@ -69,10 +69,13 @@ import pandas as pd
 df_flight = pd.read_csv("capstone_airline_reviews3.csv", encoding="utf-8", encoding_errors='ignore').dropna()
 ```
 
-**Visualization for a glimpse of dataset**
-![Screenshot](histogram.png)
-![Screenshot](heatmap.png)
-![Screenshot](violin_distribution.png)
+**Visualization for a glimpse of dataset**  
+
+![Screenshot](histogram.png)  
+
+![Screenshot](heatmap.png)  
+
+![Screenshot](violin_distribution.png)  
 
 **Decision Tree Classifier Model Setup**  
 For Decision Tree Classier model, we use 'overall', 'seat_comfort', 'cabin_service', 'food_bev', 'entertainment', 'ground_service', 'value_for_money', 'sentiment' features. To train a decision tree classifier, we preprocess the dataset by encoding categorical variables into dummy variables, scaling numerical variables, and splitting the data into training and testing sets.
