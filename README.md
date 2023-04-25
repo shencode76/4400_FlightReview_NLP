@@ -152,61 +152,52 @@ In summary, our goal is to build an NLP model that can accurately classify custo
 
 
 ## Results
-
 **Main results**
-
 - Natural Language Process Model
 
-The model has been trained for 3 epochs, and we can observe that the training accuracy does not improve significantly over these epochs. After the first epoch, the training accuracy is 66.23%, which increases slightly to 66.64% after the second and third epochs. The validation accuracy after the third epoch is 66.81%. These results indicate that the model might not be learning effectively from the data, as the accuracy levels are not very high and do not show significant improvement. The validation accuracy is around 66.81%.
+The training loss decreases from 0.642 in the first epoch to 0.316 in the fifth epoch, indicating that the model is learning and improving its predictions as it iterates through the training data. The training accuracy increases from 67.58% in the first epoch to 86.83% in the fifth epoch, which shows that the model is getting better at classifying the reviews correctly. The validation loss is 0.618, which is higher than the training loss in the fifth epoch (0.316). This discrepancy suggests that the model might be overfitting the training data. The validation accuracy is 81.44%, which is lower than the training accuracy in the fifth epoch (86.83%). This difference also indicates potential overfitting.
 
 - Decision Tree: 
-The baseline Decision Tree classifier achieved an accuracy of 0.9339.
 
-Optimized parameter: 
-By tuning the max_depth parameter, the optimal max_depth was found to be 5, and the accuracy improved slightly to 0.9402.
-Tuning the min_samples_split parameter led to an optimal value of 100, yielding an accuracy of 0.9363. Tuning the min_samples_leaf parameter resulted in an optimal value of 54, with an accuracy of 0.9413. The final optimal Decision Tree classifier, with all three parameters tuned, achieved an accuracy of 0.9413.
+The baseline Decision Tree classifier achieved an accuracy of 0.9025. Optimized parameter: By tuning the max_depth parameter, the optimal max_depth was found to be 7, and the accuracy improved slightly to 0.9117. Tuning the min_samples_split parameter led to an optimal value of 100, yielding an accuracy of 0.9106. Tuning the min_samples_leaf parameter resulted in an optimal value of 59, with an accuracy of 0.9149. The final optimal Decision Tree classifier, with all three parameters tuned, achieved an accuracy of 0.9149, and a training accuracy of 0.9346. The model is well-fitted for prediction also no obvious overfitting problem exists.
+Using a Bagging Classifier with the optimal Decision Tree as the base estimator, the accuracy was 0.9149, which is comparable to the optimal Decision Tree classifier. Overall, the accuracy of the optimized decision tree is high indicating the model is well-fitted.
+Random Forest: The experiments conducted using the RandomForestClassifier indicate that it performs better than the previous Decision Tree and Bagging Classifier models. The accuracy achieved by the RandomForestClassifier with default settings (n_estimators = 100) is 0.93. The optimized random forest classifier with n_estimaters and max_features has been tuned, and the accuracy can reach 0.93. The random forest classifier model is well-fitted. 
 
-Using a Bagging Classifier with the optimal Decision Tree as the base estimator, the accuracy was 0.9409, which is comparable to the optimal Decision Tree classifier. Overall, the accuracy of the optimized decision tree is high indicating the model is well-fitted.
+- KNN: 
 
-- Random Forest:
-The experiments conducted using the RandomForestClassifier indicate that it performs better than the previous Decision Tree and Bagging Classifier models. The accuracy achieved by the RandomForestClassifier with default settings (n_estimators = 100) is 0.94899754. The optimized random forest classifier with n_estimaters and max_features has been tuned, and the accuracy can reach 0.95.  The random forest classifier model is well-fitted
+The training accuracy is 1.0, which means the model correctly classified all the training samples. This could be a sign of overfitting, as the model has perfectly learned the training data but might not generalize well to new, unseen data. The testing accuracy is 0.9261, which means that the model correctly classified around 92.61% of the test samples. This is a good performance, but it's important to note that the accuracy is significantly lower than the training accuracy, which further supports the suspicion of overfitting.
 
 
 **Supplementary results**
-
 - Natural Language Process Model
 
 The model architecture chosen for this task is a bidirectional LSTM with the following parameters:
-
 Input dimension: Length of the TEXT vocabulary (INPUT_DIM)
 Embedding dimension: 100 (EMBEDDING_DIM)
 Hidden dimension: 128 (HIDDEN_DIM)
-Output dimension: 1 (OUTPUT_DIM)
+Output dimension: 3 (OUTPUT_DIM)
 Number of layers: 2 (N_LAYERS)
 Bidirectional: True (BIDIRECTIONAL)
 Dropout: 0.5 (DROPOUT)
 Padding index: Index of the padding token in TEXT vocabulary (PAD_IDX)
-The optimizer chosen for training is Adam with a default learning rate, and the loss function is BCEWithLogitsLoss. The model is trained for 3 epochs, and the batch size is set to 64.
-
-The parameter choices for the model architecture and training process seem reasonable, but the results indicate that the model might not be learning effectively from the data. This might be due to various factors such as insufficient training data, suboptimal hyperparameter choices, or the model architecture not being suitable for the task. Further experiments with different model architectures, hyperparameters, and additional training data might help in improving the performance.
+The optimizer chosen for training is Adam with a default learning rate, and the loss function is CrossEntropyLoss. The model is trained for 5 epochs, and the batch size is set to 64.
+The parameter choices for the model architecture and training process seem reasonable, but the results indicate that the model might be overfitting the training data. This might be due to various factors such as insufficient training data, suboptimal hyperparameter choices, or the model architecture not being suitable for the task. Further experiments with different model architectures, hyperparameters, and additional training data might help in improving the performance and generalization of unseen data.
 
 - Decision Tree： 
+
 The max_depth parameter controls the maximum depth of the tree. The chosen range is 2 to 50 The optimal value (5) helps prevent overfitting by limiting the tree's depth.
-
 The min_samples_split parameter determines the minimum number of samples required to split an internal node. Range from 2 to 100 was explored. The optimal value (100) ensures that the tree does not become too complex.
-
-The min_samples_leaf parameter sets the minimum number of samples required to be at a leaf node. A range of values from 1 to the number of leaves was considered. The optimal value (54) helps ensure that the tree does not create leaves with very few samples.
-
+The min_samples_leaf parameter sets the minimum number of samples required to be at a leaf node. A range of values from 1 to the number of leaves was considered. The optimal value (59) helps ensure that the tree does not create leaves with very few samples.
 In conclusion, the experiments show that tuning the parameters of the Decision Tree classifier can lead to improved performance. The Bagging Classifier provides a comparable result, showing the potential of ensemble methods to further enhance classification tasks.
-
-
 - Random Forest
 
-To improve the performance of the RandomForestClassifier, the max_features and n_estimators hyperparameters were tuned. For max_features, a range of 1 to 20 was considered, and cross-validation was used to determine the optimal value. The optimal max_features value was found to be 15, resulting in an accuracy of 0.94759057.
+To improve the performance of the RandomForestClassifier, the max_features and n_estimators hyperparameters were tuned. For max_features, a range of 1 to 20 was considered, and cross-validation was used to determine the optimal value. The optimal max_features value was found to be 6.
+Similarly, the n_estimators parameter was tuned using a range of 1 to 20. Cross-validation was again employed to find the optimal value. The optimal n_estimators value was found to be 20, leading to an accuracy of 0.929. By exploring the importance of each feature, we find, different than a single decision tree, the random forest model doesn't have a single feature that takes a high percentage of the importance but has multiple features that take the importance together which could cover more variance.
+- KNN
 
-Similarly, the n_estimators parameter was tuned using a range of 1 to 20. Cross-validation was again employed to find the optimal value. The optimal n_estimators value was found to be 20, leading to an accuracy of 0.95145973.
+We implement the gird search to find out the best parameter of KNN. Specifically, we want to find the best number of neighbors, weighted method, and metric techniques. The result turns out to be 11 nearest neighbors, calculate the distance by Euclidean, and use distance as the weight.  
 
-Finally, by combining the optimal values for both max_features and n_estimators (15 and 20, respectively), the RandomForestClassifier achieved an accuracy of 0.94970102. This indicates that the model's performance improved after tuning the hyperparameters.
+
 
 ## Discussion
 
