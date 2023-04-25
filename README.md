@@ -193,23 +193,23 @@ In conclusion, the experiments show that tuning the parameters of the Decision T
 
 To improve the performance of the RandomForestClassifier, the max_features and n_estimators hyperparameters were tuned. For max_features, a range of 1 to 20 was considered, and cross-validation was used to determine the optimal value. The optimal max_features value was found to be 6.
 Similarly, the n_estimators parameter was tuned using a range of 1 to 20. Cross-validation was again employed to find the optimal value. The optimal n_estimators value was found to be 20, leading to an accuracy of 0.929. By exploring the importance of each feature, we find, different than a single decision tree, the random forest model doesn't have a single feature that takes a high percentage of the importance but has multiple features that take the importance together which could cover more variance.
+
 - KNN
 
 We implement the gird search to find out the best parameter of KNN. Specifically, we want to find the best number of neighbors, weighted method, and metric techniques. The result turns out to be 11 nearest neighbors, calculate the distance by Euclidean, and use distance as the weight.  
 
 
+## Discussion:
+The model is trained using the LSTM architecture with bidirectional processing, and the accuracy obtained is quite satisfactory. After 5 epochs, the model achieves a training accuracy of 86.83% and a validation accuracy of 81.44%. These results indicate that the model has learned to generalize well.
+While the results are promising, it's important to compare them with other approaches or models in order to have a better understanding of their performance：
+CNN-based models: Convolutional Neural Networks (CNNs) have also been applied to NLP tasks, including sentiment analysis, and have demonstrated competitive performance. They are especially good at capturing local patterns in the text, which could help improve sentiment classification.
+Ensemble methods: Combining the predictions of multiple models (e.g., an RNN, a CNN, and a Transformer) might lead to better performance, as each model might capture different aspects of the data.
+Transformer-based models: Models such as BERT, RoBERTa, or GPT have achieved remarkable performance in a wide range of NLP tasks, including sentiment analysis. These models can be fine-tuned for the specific task and have been known to yield even better results than the RNN model used in this code.
 
-## Discussion
+Although our classification prediction model with Decision Tree classifier, Random Forest, and KNN algorithms have included multiple numerical features to analyze the whole dataset, the open-ended flight review pool can provide richer information and detailed explanations of customers’ decisions of recommendation.  For example, Tommy may rate the food service with a 3/10 score cause he likes hot beverages due to his stomachache, but Robert the other passenger likes a cold beverage with full ice. There are individual differences between passengers and our NLP model can based on review data and recommendation results to make predictions of the attitudes of customers. If we only focus on the numerical values from the surveys, then we cannot make an effortful improvement to provide personalized services to each customer. 
 
-- Natural Language Process Model
+For now, our NLP model can be based on each individual review to give an attitude classification score(1: positive, 2: negative). Our future improvement of the model will dip into details to present the words related to the positive/negative attitudes. 
 
-The results obtained from the experiments indicate that the model's performance is not as good as we had hoped for. There is no significant improvement in accuracy across the epochs. This suggests that the model might not be effective in learning from the data. Here are some potential issues and possible solutions we plan to implement:
-
-Insufficient training data: In order to increase the speed in trying we limit to 500 data samples might be too small for the model to learn effectively. A larger dataset could help the model learn more complex patterns and improve its performance. We will Increase the size of the dataset by including more records or by using data augmentation techniques.
-
-Suboptimal hyperparameter choices: The current hyperparameter choices might not be the best fit for this problem. The learning rate, number of layers, hidden dimensions, dropout rate, and other hyperparameters could be tuned to improve the model's performance. We would Perform a grid search or use Bayesian optimization to find the optimal hyperparameters for this problem.
-
-Preprocessing and tokenization: The quality of the input data and its preprocessing can have a significant impact on the model's performance. We will investigate the data preprocessing steps and improve them if necessary. This may include better tokenization, removing irrelevant information, or using a more suitable tokenizer for the task.
 
 ## Reference: 
 Our implementation uses bentrevett's [Updated Sentiment Analysis](https://github.com/bentrevett/pytorch-sentiment-analysis/blob/master/2%20-%20Upgraded%20Sentiment%20Analysis.ipynb)code as a starting point. 
